@@ -7,7 +7,6 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-// List both 'localhost' and '127.0.0.1' variants here
 const allowedOrigins = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
