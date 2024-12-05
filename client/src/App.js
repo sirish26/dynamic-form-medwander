@@ -1,16 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Form from './components/Form';
-import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="app-container">
-        <div className="button-container">
-          <Link to="/formA" className="form-button">Form A</Link>
-          <Link to="/formB" className="form-button">Form B</Link>
-        </div>
+      <div>
+        <Link to="/formA">Form A</Link>
+        <Link to="/formB">Form B</Link>
 
         <Routes>
           <Route path="/formA" element={<Form formType="Form A" />} />
@@ -20,5 +17,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;

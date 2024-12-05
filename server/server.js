@@ -8,25 +8,17 @@ const app = express();
 app.use(express.json());
 
 const allowedOrigins = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
     'https://potential-space-fishstick-q5qqg9r5qj7hxw46-3000.app.github.dev',
+    'http://localhost:3000',
 ];
 
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+app.use(cors({
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'OPTIONS'],
     credentials: true,
-};
+}));
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.options('*', cors());
 
 mongoose.connect(process.env.uri)
     .then(() => console.log('MongoDB connected'))
